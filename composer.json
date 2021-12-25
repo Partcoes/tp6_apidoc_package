@@ -1,0 +1,27 @@
+{
+    "name": "qing/doc",
+    "version": "v1.0.0",
+    "autoload": {
+        "psr-4": {
+            "Qing\\QingDoc\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "段帅强",
+            "email": "13141084187@qq.com"
+        }
+    ],
+    "require": {
+        "topthink/think-orm": "^2.0",
+      "ext-curl": "*",
+        "ext-json": "*"
+    },
+    "extra": {
+        "think": {
+            "config":{
+                "qing": "config.php"
+            }
+        }
+    }
+}

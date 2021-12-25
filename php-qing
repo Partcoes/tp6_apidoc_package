@@ -1,0 +1,31 @@
+#!/usr/bin/env php
+<?php
+
+array_shift($argv);
+$function = array_shift($argv);
+
+if(function_exists($function) && !in_array($function,['var_dump','print_r'])){
+    $data = [];
+    foreach($argv as $k => $v){
+        $temp = json_decode($v,true);
+        if(!empty($temp) && $function != 'json_decode'){
+            $data[$k] = $temp;
+        }else{
+            $data[$k] = $v;
+        }
+    }
+    $result = call_user_func_array($function,$data);
+    if(is_string($result) || is_numeric($result)){
+        echo $result;die;
+    }
+    var_dump($result);die;
+}
+array_unshift($argv,$function);
+foreach ($argv as $index => $item) {
+    $isJson = json_decode($item,true);
+    if(!empty($isJson)){
+        var_dump($isJson);die;
+    }
+    echo $item;
+    echo "\n";
+}
